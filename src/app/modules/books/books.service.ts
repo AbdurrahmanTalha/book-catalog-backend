@@ -76,4 +76,36 @@ const getBookService = async (id: string): Promise<IBook | null> => {
     return result;
 };
 
-export default { getAllBooksService, createBookService, getBookService };
+const updateBookService = async (
+    id: string,
+    payload: Partial<IBook>,
+): Promise<IBook | null> => {
+    const isExist = await Books.findById(id).exec();
+    console.log(isExist);
+    if (!isExist) {
+        throw new ApiError(httpStatus.NOT_FOUND, "Book not found !");
+    }
+
+    const result = await Books.findOneAndUpdate({ _id: id }, payload, {
+        new: true,
+    }).exec();
+    return result;
+};
+
+const deleteBookService = async (id: string): Promise<IBook | null> => {
+    const isExist = await Books.findById(id).exec();
+    if (!isExist) {
+        throw new ApiError(httpStatus.NOT_FOUND, "Book Not found");
+    }
+
+    const result = await Books.findByIdAndDelete(id).exec();
+    return result;
+};
+
+export default {
+    getAllBooksService,
+    createBookService,
+    getBookService,
+    updateBookService,
+    deleteBookService,
+};
