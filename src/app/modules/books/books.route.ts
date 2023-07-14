@@ -20,6 +20,6 @@ router.post(
     validateRequest(createBookZodValidationSchema),
     controller.createBook,
 );
-// router.delete("/:id", controller.deleteBook)
+router.delete("/:id", controller.deleteBook);
 
 export default router;
