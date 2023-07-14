@@ -3,6 +3,7 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
 import router from "./app/routes";
 import cookieParser from "cookie-parser";
+import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 
 const app: Application = express();
 
@@ -16,6 +17,7 @@ app.use("/api/v1", router);
 app.get("/", (req: Request, res: Response) => {
     res.send("Server is running");
 });
+app.use(globalErrorHandler);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 app.use((req: Request, res: Response, next: NextFunction) => {

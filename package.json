@@ -1,42 +1,42 @@
 {
-  "name": "book-store-manager-server",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "dev": "ts-node-dev --respawn --rs --transpile-only src/server.ts",
-    "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
-    "lint:fixed": "eslint . --fix",
-    "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
-    "prettier:fixed": "prettier --write .",
-    "lint_prettier:check": "yarn lint:check && yarn prettier:check",
-    "lint": "eslint --ext .js,.ts .",
-    "prepare": "husky install"
-  },
-  "lint-staged": {
-    "src/**/*.ts": "yarn lint_prettier:check",
-    "*.{js,ts}": "eslint --cache --fix"
-  },
-  "dependencies": {
-    "@types/cookie-parser": "^1.4.3",
-    "@types/cors": "^2.8.13",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "eslint-config-prettier": "^8.8.0",
-    "express": "^4.18.2",
-    "http-status": "^1.6.2",
-    "mongoose": "^7.3.4",
-    "prettier": "^3.0.0",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.1.6",
-    "zod": "^3.21.4"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.44.0",
-    "husky": ">=6",
-    "lint-staged": ">=10"
-  }
+    "name": "book-store-manager-server",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "dev": "ts-node-dev --respawn --rs --transpile-only src/server.ts",
+        "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+        "lint:fixed": "eslint . --fix",
+        "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+        "prettier:fixed": "prettier --write .",
+        "lint_prettier:check": "yarn lint:check && yarn prettier:check",
+        "lint": "eslint --ext .js,.ts .",
+        "prepare": "husky install"
+    },
+    "lint-staged": {
+        "src/**/*.ts": "yarn lint_prettier:check",
+        "*.{js,ts}": "eslint --cache --fix"
+    },
+    "dependencies": {
+        "@types/cookie-parser": "^1.4.3",
+        "@types/cors": "^2.8.13",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "eslint-config-prettier": "^8.8.0",
+        "express": "^4.18.2",
+        "http-status": "^1.6.2",
+        "mongoose": "^7.3.4",
+        "prettier": "^3.0.0",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.1.6",
+        "zod": "^3.21.4"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "eslint": "^8.44.0",
+        "husky": ">=6",
+        "lint-staged": ">=10"
+    }
 }

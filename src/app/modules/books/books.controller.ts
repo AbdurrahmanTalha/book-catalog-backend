@@ -48,4 +48,8 @@ const getSpecificBook = catchAsync(async (req, res) => {
     });
 });
 
+/* const editBook = catchAsync(async (req, res) => {
+    
+}) */
+
 export default { getAllBooks, createBook, getSpecificBook };

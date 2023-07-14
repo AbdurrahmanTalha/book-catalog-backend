@@ -5,6 +5,8 @@ import IPaginationOptions from "../../../interfaces/pagination";
 import { bookFilterableFields } from "./books.constants";
 import { IBook, IBookFilters } from "./books.interface";
 import Books from "./books.model";
+import ApiError from "../../../errors/ApiError";
+import httpStatus from "http-status";
 
 const getAllBooksService = async (
     paginationOptions: IPaginationOptions,
@@ -68,6 +70,9 @@ const createBookService = async (book: IBook): Promise<IBook | null> => {
 
 const getBookService = async (id: string): Promise<IBook | null> => {
     const result = await Books.findById(id).exec();
+    if (!result) {
+        throw new ApiError(httpStatus.NOT_FOUND, "Book Doesn't Exist");
+    }
     return result;
 };
 
