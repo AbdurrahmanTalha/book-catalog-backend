@@ -27,6 +27,7 @@ const bookSchema = new mongoose.Schema<IBook, BookModel>(
                     user: {
                         type: mongoose.Types.ObjectId,
                         required: true,
+                        ref: "user",
                     },
                     review: {
                         type: String,

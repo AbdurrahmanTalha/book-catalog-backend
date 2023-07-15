@@ -3,7 +3,7 @@ import paginationHelpers from "../../../helpers/paginationHelpers";
 import IGenericResponse from "../../../interfaces/genericResponse";
 import IPaginationOptions from "../../../interfaces/pagination";
 import { bookFilterableFields } from "./books.constants";
-import { IBook, IBookFilters } from "./books.interface";
+import { IBook, IBookFilters, IReview } from "./books.interface";
 import Books from "./books.model";
 import ApiError from "../../../errors/ApiError";
 import httpStatus from "http-status";
@@ -102,10 +102,29 @@ const deleteBookService = async (id: string): Promise<IBook | null> => {
     return result;
 };
 
+const addReviewService = async (
+    id: string,
+    payload: IReview,
+): Promise<IBook | null> => {
+    const book = await Books.findById(id).exec();
+    if (!book) {
+        throw new ApiError(httpStatus.NOT_FOUND, "Book not found!");
+    }
+    const result = await Books.findByIdAndUpdate(
+        id,
+        {
+            $push: { reviews: payload },
+        },
+        { new: true },
+    ).exec();
+    return result;
+};
+
 export default {
     getAllBooksService,
     createBookService,
     getBookService,
     updateBookService,
     deleteBookService,
+    addReviewService,
 };

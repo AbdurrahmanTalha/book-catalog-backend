@@ -21,5 +21,6 @@ router.post(
     controller.createBook,
 );
 router.delete("/:id", controller.deleteBook);
+router.post("/addReview/:id", controller.addReview);
 
 export default router;

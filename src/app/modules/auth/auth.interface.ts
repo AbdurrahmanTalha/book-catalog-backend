@@ -5,10 +5,11 @@ export type IUser = {
     email: string;
     password: string;
     wishlist: IBook[];
+    _id: mongoose.Schema.Types.ObjectId;
 };
 
 export type UserModel = {
-    isUserExist(id: string): Promise<Pick<IUser, "email" | "password">>;
+    isUserExist(id: string): Promise<Pick<IUser, "_id" | "email" | "password">>;
     isPasswordMatched(
         givenPassword: string,
         savedPassword: string,

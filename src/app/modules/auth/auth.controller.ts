@@ -37,4 +37,23 @@ const loginUser = catchAsync(async (req, res) => {
     });
 });
 
-export default { createUser, loginUser };
+const refreshToken = catchAsync(async (req, res) => {
+    const { refreshToken } = req.cookies;
+    const result = await service.refreshTokenService(refreshToken);
+    console.log(refreshToken);
+    const cookieOptions = {
+        secure: config.env === "production" ? true : false,
+        httpOnly: true,
+    };
+
+    res.cookie("refreshToken", refreshToken, cookieOptions);
+
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Refreshed token",
+        data: result,
+    });
+});
+
+export default { createUser, loginUser, refreshToken };
