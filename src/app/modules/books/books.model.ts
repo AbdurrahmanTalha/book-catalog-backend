@@ -36,6 +36,10 @@ const bookSchema = new mongoose.Schema<IBook, BookModel>(
                 },
             ],
         },
+        img: {
+            type: String,
+            required: true,
+        },
     },
     { timestamps: true, versionKey: false },
 );

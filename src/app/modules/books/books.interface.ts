@@ -33,6 +33,7 @@ export type IBook = {
     genre: IGenre;
     publishedAt: string;
     reviews?: IReview[];
+    img: string;
 };
 
 export type IBookFilters = {
