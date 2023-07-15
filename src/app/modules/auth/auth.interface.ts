@@ -7,4 +7,24 @@ export type IUser = {
     wishlist: IBook[];
 };
 
-export type UserModel = mongoose.Model<IUser, string>;
+export type UserModel = {
+    isUserExist(id: string): Promise<Pick<IUser, "email" | "password">>;
+    isPasswordMatched(
+        givenPassword: string,
+        savedPassword: string,
+    ): Promise<boolean>;
+} & mongoose.Model<IUser>;
+
+export type ILoginUser = {
+    email: string;
+    password: string;
+};
+
+export type ILoginUserResponse = {
+    accessToken: string;
+    refreshToken?: string;
+};
+
+export type IRefreshTokenResponse = {
+    accessToken: string;
+};
