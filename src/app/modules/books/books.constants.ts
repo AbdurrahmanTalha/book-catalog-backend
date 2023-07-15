@@ -26,4 +26,5 @@ export const bookGenres = [
     "Western",
     "Paranormal/Supernatural",
     "Graphic Novel/Comic",
+    "Education",
 ];

@@ -20,7 +20,8 @@ export type IGenre =
     | "Satire"
     | "Western"
     | "Paranormal/Supernatural"
-    | "Graphic Novel/Comic";
+    | "Graphic Novel/Comic"
+    | "Education";
 
 export type IReview = {
     comments: string;
