@@ -32,3 +32,9 @@ export const updateBookZodValidationSchema = z.object({
         img: z.string().url().optional(),
     }),
 });
+export const addReviewZodValidationSchema = z.object({
+    body: z.object({
+        user: z.string(),
+        review: z.string(),
+    }),
+});

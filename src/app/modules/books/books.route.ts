@@ -2,6 +2,7 @@ import express from "express";
 import controller from "./books.controller";
 import validateRequest from "../../middlewares/validateRequest";
 import {
+    addReviewZodValidationSchema,
     createBookZodValidationSchema,
     updateBookZodValidationSchema,
 } from "./books.validation";
@@ -21,6 +22,10 @@ router.post(
     controller.createBook,
 );
 router.delete("/:id", controller.deleteBook);
-router.post("/addReview/:id", controller.addReview);
+router.post(
+    "/addReview/:id",
+    validateRequest(addReviewZodValidationSchema),
+    controller.addReview,
+);
 
 export default router;
